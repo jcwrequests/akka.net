@@ -62,23 +62,23 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\core\Akka.TestKit\Akka.TestKit.csproj">
+    <ProjectReference Include="..\..\..\core\Akka.TestKit\Akka.TestKit.csproj">
       <Project>{0d3cbad0-bbdb-43e5-afc4-ed1d3ecdc224}</Project>
       <Name>Akka.TestKit</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\..\core\Akka.Tests.Shared.Internals\Akka.Tests.Shared.Internals.csproj">
+    <ProjectReference Include="..\..\..\core\Akka.Tests.Shared.Internals\Akka.Tests.Shared.Internals.csproj">
       <Project>{e636d23c-3432-4aa9-9a5d-5f29d33d3399}</Project>
       <Name>Akka.Tests.Shared.Internals</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\..\core\Akka\Akka.csproj">
+    <ProjectReference Include="..\..\..\core\Akka\Akka.csproj">
       <Project>{5deddf90-37f0-48d3-a0b0-a5cbd8a7e377}</Project>
       <Name>Akka</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\testkits\Akka.TestKit.Xunit2\Akka.TestKit.Xunit2.csproj">
+    <ProjectReference Include="..\..\testkits\Akka.TestKit.Xunit2\Akka.TestKit.Xunit2.csproj">
       <Project>{7dbd5c17-5e9d-40c4-9201-d092751532a7}</Project>
       <Name>Akka.TestKit.Xunit2</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Akka.DI.Core\Akka.DI.Core.csproj">
+    <ProjectReference Include="..\Akka.DI.Core\Akka.DI.Core.csproj">
       <Project>{fdf09d18-b68e-4b95-b1f6-b89d9c6c3ae9}</Project>
       <Name>Akka.DI.Core</Name>
     </ProjectReference>
