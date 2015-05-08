@@ -10,6 +10,7 @@ namespace Akka.DI.Core.Tests
 {
     public class DependencyResolverSpec : AkkaSpec
     {
+
         sealed class TestActorResolver : IDependencyResolver
         {
             private ActorSystem system;
@@ -40,11 +41,15 @@ namespace Akka.DI.Core.Tests
 
             public void Release(ActorBase actor)
             {
-                actor = null
+                actor = null;
             }
         }
 
-        //[Fact]
-        //rest of spec here
+        [Fact]
+        public void SystemMustHaveARegisteredDIExt()
+        {
+            Assert.True(false);
+        }
+
     }
 }
