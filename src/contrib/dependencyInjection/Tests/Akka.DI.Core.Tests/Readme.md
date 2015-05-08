@@ -1,0 +1,1 @@
+# Akka.DI.Core.Tests #
