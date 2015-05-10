@@ -19,6 +19,7 @@ namespace Akka.DI.Core.Tests
             {
                 if (system == null) throw new ArgumentNullException("system");
                 this.system = system;
+                this.system.AddDependencyResolver(this);
             }
             public Type GetType(string actorName)
             {
@@ -48,7 +49,16 @@ namespace Akka.DI.Core.Tests
         [Fact]
         public void SystemMustHaveARegisteredDIExt()
         {
-            Assert.True(false);
+            using (var system = ActorSystem.Create("MySystem"))
+            {
+                var propsResolver =
+                    new TestActorResolver(system);
+
+                var extenion = system.GetExtension<DIExt>();
+                Assert.NotNull(extenion);
+
+            }
+           
         }
 
     }
