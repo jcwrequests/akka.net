@@ -5,12 +5,20 @@ using System.Text;
 using Akka.Actor;
 using Akka.TestKit;
 using Xunit;
+using Xunit.Extensions;
 
 namespace Akka.DI.Core.Tests
 {
     public class DependencyResolverSpec : AkkaSpec
     {
-
+        
+        private class DITestActor : ActorBase
+        {
+            protected override bool Receive(object message)
+            {
+                return true;
+            }
+        }
         sealed class TestActorResolver : IDependencyResolver
         {
             private ActorSystem system;
@@ -46,7 +54,7 @@ namespace Akka.DI.Core.Tests
             }
         }
 
-        [Fact]
+        [Fact, Trait("DIExt", "DependencyResolverSpec")]
         public void SystemMustHaveARegisteredDIExt()
         {
             using (var system = ActorSystem.Create("MySystem"))
@@ -60,6 +68,33 @@ namespace Akka.DI.Core.Tests
             }
            
         }
+       [Fact, Trait("DIExt", "DependencyResolverSpec")]
+        public void DependencyResolverCanCreatePropsOfAnActor()
+        {
+            using (var system = ActorSystem.Create("MySystem"))
+            {
+                var propsResolver =
+                    new TestActorResolver(system);
 
+                Props testProps = propsResolver.Create<DITestActor>();
+                Assert.NotNull(testProps);
+
+            }
+
+        }
+        [Fact, Trait("DIExt", "DependencyResolverSpec")]
+        public void DependencyResolverCanCreateAnActorReference()
+        {
+            using (var system = ActorSystem.Create("MySystem"))
+            {
+                var propsResolver =
+                    new TestActorResolver(system);
+
+                IActorRef testActorRef = system.ActorOf(propsResolver.Create<DITestActor>());
+                Assert.NotNull(testActorRef);
+
+            }
+       }
+       
     }
 }
