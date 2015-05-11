@@ -95,6 +95,24 @@ namespace Akka.DI.Core.Tests
 
             }
        }
-       
+
+        [Fact]
+        public void DependencyResolver_created_with_strategy_must_have_it_set()
+        {
+            var strategy = new OneForOneStrategy(_ => Directive.Stop);
+            using (var system = ActorSystem.Create("MySystem"))
+            {
+                var propsResolver =
+                    new TestActorResolver(system);
+
+                var props = propsResolver.Create<DITestActor>(strategy);
+
+                Assert.Equal(strategy, props.SupervisorStrategy);
+            }
+            
+
+            
+        }
+
     }
 }
