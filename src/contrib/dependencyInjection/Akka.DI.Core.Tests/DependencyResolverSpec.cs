@@ -97,7 +97,7 @@ namespace Akka.DI.Core.Tests
        }
 
         [Fact]
-        public void DependencyResolver_created_with_strategy_must_have_it_set()
+        public void DependencyResolver_created_props_with_strategy_must_have_it_set()
         {
             var strategy = new OneForOneStrategy(_ => Directive.Stop);
             using (var system = ActorSystem.Create("MySystem"))
